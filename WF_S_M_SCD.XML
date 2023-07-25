@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!-- Informatica proprietary -->
+<!DOCTYPE POWERMART SYSTEM "powrmart.dtd">
+<POWERMART CREATION_DATE="07/25/2023 12:44:46" REPOSITORY_VERSION="189.98">
+<REPOSITORY NAME="Repo" VERSION="189" CODEPAGE="MS1252" DATABASETYPE="Oracle">
+<FOLDER NAME="Training" GROUP="" OWNER="Administrator" SHARED="NOTSHARED" DESCRIPTION="" PERMISSIONS="rwx---r--" UUID="2c90ef2e-ebcd-470e-94f0-f3576f35267a">
+    <SOURCE BUSINESSNAME ="" DATABASETYPE ="Flat File" DBDNAME ="FlatFile" DESCRIPTION ="" NAME ="emp_Src" OBJECTVERSION ="1" OWNERNAME ="" VERSIONNUMBER ="1">
+        <FLATFILE CODEPAGE ="MS1252" CONSECDELIMITERSASONE ="NO" DELIMITED ="YES" DELIMITERS ="," ESCAPE_CHARACTER ="" KEEPESCAPECHAR ="NO" LINESEQUENTIAL ="NO" MULTIDELIMITERSASAND ="NO" NULLCHARTYPE ="ASCII" NULL_CHARACTER ="*" PADBYTES ="1" QUOTE_CHARACTER ="DOUBLE" REPEATABLE ="NO" ROWDELIMITER ="0" SHIFTSENSITIVEDATA ="NO" SKIPROWS ="1" STRIPTRAILINGBLANKS ="NO"/>
+        <TABLEATTRIBUTE NAME ="Base Table Name" VALUE =""/>
+        <TABLEATTRIBUTE NAME ="Search Specification" VALUE =""/>
+        <TABLEATTRIBUTE NAME ="Sort Specification" VALUE =""/>
+        <TABLEATTRIBUTE NAME ="Datetime Format" VALUE ="A  19 mm/dd/yyyy hh24:mi:ss"/>
+        <TABLEATTRIBUTE NAME ="Thousand Separator" VALUE ="None"/>
+        <TABLEATTRIBUTE NAME ="Decimal Separator" VALUE ="."/>
+        <TABLEATTRIBUTE NAME ="Add Currently Processed Flat File Name Port" VALUE ="NO"/>
+        <TABLEATTRIBUTE NAME ="Source TimeStamp" VALUE =""/>
+        <SOURCEFIELD BUSINESSNAME ="" DATATYPE ="string" DESCRIPTION ="" FIELDNUMBER ="1" FIELDPROPERTY ="0" FIELDTYPE ="ELEMITEM" HIDDEN ="NO" KEYTYPE ="NOT A KEY" LENGTH ="50" LEVEL ="0" NAME ="Name" NULLABLE ="NULL" OCCURS ="0" OFFSET ="0" PHYSICALLENGTH ="50" PHYSICALOFFSET ="0" PICTURETEXT ="" PRECISION ="50" SCALE ="0" USAGE_FLAGS =""/>
+        <SOURCEFIELD BUSINESSNAME ="" DATATYPE ="number" DESCRIPTION ="" FIELDNUMBER ="2" FIELDPROPERTY ="0" FIELDTYPE ="ELEMITEM" HIDDEN ="NO" KEYTYPE ="NOT A KEY" LENGTH ="5" LEVEL ="0" NAME ="ID" NULLABLE ="NULL" OCCURS ="0" OFFSET ="50" PHYSICALLENGTH ="5" PHYSICALOFFSET ="50" PICTURETEXT ="" PRECISION ="5" SCALE ="0" USAGE_FLAGS =""/>
+        <SOURCEFIELD BUSINESSNAME ="" DATATYPE ="string" DESCRIPTION ="" FIELDNUMBER ="3" FIELDPROPERTY ="0" FIELDTYPE ="ELEMITEM" HIDDEN ="NO" KEYTYPE ="NOT A KEY" LENGTH ="50" LEVEL ="0" NAME ="Employer" NULLABLE ="NULL" OCCURS ="0" OFFSET ="55" PHYSICALLENGTH ="50" PHYSICALOFFSET ="55" PICTURETEXT ="" PRECISION ="50" SCALE ="0" USAGE_FLAGS =""/>
+    </SOURCE>
+    <TARGET BUSINESSNAME ="" CONSTRAINT ="" DATABASETYPE ="Oracle" DESCRIPTION ="" NAME ="EMP_DET" OBJECTVERSION ="1" TABLEOPTIONS ="" VERSIONNUMBER ="1">
+        <TARGETFIELD BUSINESSNAME ="" DATATYPE ="number" DESCRIPTION ="" FIELDNUMBER ="1" KEYTYPE ="PRIMARY KEY" NAME ="ID" NULLABLE ="NOTNULL" PICTURETEXT ="" PRECISION ="15" SCALE ="0"/>
+        <TARGETFIELD BUSINESSNAME ="" DATATYPE ="varchar2" DESCRIPTION ="" FIELDNUMBER ="2" KEYTYPE ="NOT A KEY" NAME ="NAME" NULLABLE ="NULL" PICTURETEXT ="" PRECISION ="50" SCALE ="0"/>
+        <TARGETFIELD BUSINESSNAME ="" DATATYPE ="varchar2" DESCRIPTION ="" FIELDNUMBER ="3" KEYTYPE ="NOT A KEY" NAME ="EMPLOYER" NULLABLE ="NULL" PICTURETEXT ="" PRECISION ="50" SCALE ="0"/>
+    </TARGET>
+    <MAPPING DESCRIPTION ="" ISVALID ="YES" NAME ="M_SCD_T1" OBJECTVERSION ="1" VERSIONNUMBER ="1">
+        <TRANSFORMATION DESCRIPTION ="" NAME ="SQ_emp_Src" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Source Qualifier" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="Name" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="ID" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="5" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="Employer" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Sql Query" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="User Defined Join" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Source Filter" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Number Of Sorted Ports" VALUE ="0"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+            <TABLEATTRIBUTE NAME ="Select Distinct" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Is Partitionable" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Pre SQL" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Post SQL" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Output is deterministic" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Output is repeatable" VALUE ="Never"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="LKP_ID" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Lookup Procedure" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="ID" PICTURETEXT ="" PORTTYPE ="LOOKUP/OUTPUT" PRECISION ="15" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="NAME" PICTURETEXT ="" PORTTYPE ="LOOKUP/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="EMPLOYER" PICTURETEXT ="" PORTTYPE ="LOOKUP/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="ID1" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="5" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Lookup Sql Override" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Lookup table name" VALUE ="EMP_DET"/>
+            <TABLEATTRIBUTE NAME ="Lookup Source Filter" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Lookup caching enabled" VALUE ="YES"/>
+            <TABLEATTRIBUTE NAME ="Lookup policy on multiple match" VALUE ="Use Any Value"/>
+            <TABLEATTRIBUTE NAME ="Lookup condition" VALUE ="ID = ID1"/>
+            <TABLEATTRIBUTE NAME ="Connection Information" VALUE ="$Target"/>
+            <TABLEATTRIBUTE NAME ="Source Type" VALUE ="Database"/>
+            <TABLEATTRIBUTE NAME ="Recache if Stale" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+            <TABLEATTRIBUTE NAME ="Lookup cache directory name" VALUE ="$PMCacheDir"/>
+            <TABLEATTRIBUTE NAME ="Lookup cache initialize" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Lookup cache persistent" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Lookup Data Cache Size" VALUE ="Auto"/>
+            <TABLEATTRIBUTE NAME ="Lookup Index Cache Size" VALUE ="Auto"/>
+            <TABLEATTRIBUTE NAME ="Dynamic Lookup Cache" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Synchronize Dynamic Cache" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Output Old Value On Update" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Update Dynamic Cache Condition" VALUE ="TRUE"/>
+            <TABLEATTRIBUTE NAME ="Cache File Name Prefix" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Re-cache from lookup source" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Insert Else Update" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Update Else Insert" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Datetime Format" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Thousand Separator" VALUE ="None"/>
+            <TABLEATTRIBUTE NAME ="Decimal Separator" VALUE ="."/>
+            <TABLEATTRIBUTE NAME ="Case Sensitive String Comparison" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Null ordering" VALUE ="Null Is Highest Value"/>
+            <TABLEATTRIBUTE NAME ="Sorted Input" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Lookup source is static" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Pre-build lookup cache" VALUE ="Auto"/>
+            <TABLEATTRIBUTE NAME ="Subsecond Precision" VALUE ="6"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="EXP_FLAG" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Expression" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" EXPRESSION ="Name" EXPRESSIONTYPE ="GENERAL" NAME ="Name" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" EXPRESSION ="ID" EXPRESSIONTYPE ="GENERAL" NAME ="ID" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="5" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" EXPRESSION ="Employer" EXPRESSIONTYPE ="GENERAL" NAME ="Employer" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" EXPRESSION ="lkp_NAME" EXPRESSIONTYPE ="GENERAL" NAME ="lkp_NAME" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="ERROR(&apos;transformation error&apos;)" DESCRIPTION ="" EXPRESSION ="IIF(ISNULL(lkp_NAME),1,0)" EXPRESSIONTYPE ="GENERAL" NAME ="flag" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="RTRTRANS" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Router" VERSIONNUMBER ="1">
+            <GROUP DESCRIPTION ="" NAME ="INPUT" ORDER ="1" TYPE ="INPUT"/>
+            <GROUP DESCRIPTION ="" EXPRESSION ="flag=1" NAME ="insert" ORDER ="2" TYPE ="OUTPUT"/>
+            <GROUP DESCRIPTION ="Path for the data when none of the group conditions are satisfied." NAME ="DEFAULT1" ORDER ="4" TYPE ="OUTPUT/DEFAULT"/>
+            <GROUP DESCRIPTION ="" EXPRESSION ="flag=0" NAME ="update" ORDER ="3" TYPE ="OUTPUT"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="INPUT" NAME ="Name" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="INPUT" NAME ="ID" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="5" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="INPUT" NAME ="Employer" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="INPUT" NAME ="lkp_NAME" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="INPUT" NAME ="flag" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="10" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="insert" NAME ="Name1" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Name" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="insert" NAME ="ID1" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="5" REF_FIELD ="ID" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="insert" NAME ="Employer1" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Employer" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="insert" NAME ="lkp_NAME1" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="lkp_NAME" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="insert" NAME ="flag1" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" REF_FIELD ="flag" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="update" NAME ="Name3" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Name" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="update" NAME ="ID3" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="5" REF_FIELD ="ID" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="update" NAME ="Employer3" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Employer" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="update" NAME ="lkp_NAME3" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="lkp_NAME" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="update" NAME ="flag3" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" REF_FIELD ="flag" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="DEFAULT1" NAME ="Name2" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Name" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="DEFAULT1" NAME ="ID2" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="5" REF_FIELD ="ID" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="DEFAULT1" NAME ="Employer2" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="Employer" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="DEFAULT1" NAME ="lkp_NAME2" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="50" REF_FIELD ="lkp_NAME" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="DEFAULT1" NAME ="flag2" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" REF_FIELD ="flag" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="UPDTRANS" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Update Strategy" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="Name3" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="decimal" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="ID3" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="5" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="Employer3" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="50" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Update Strategy Expression" VALUE ="DD_UPDATE"/>
+            <TABLEATTRIBUTE NAME ="Forward Rejected Rows" VALUE ="YES"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+        </TRANSFORMATION>
+        <INSTANCE DESCRIPTION ="" NAME ="EMP_DET1" TRANSFORMATION_NAME ="EMP_DET" TRANSFORMATION_TYPE ="Target Definition" TYPE ="TARGET"/>
+        <INSTANCE DESCRIPTION ="" NAME ="EMP_DET" TRANSFORMATION_NAME ="EMP_DET" TRANSFORMATION_TYPE ="Target Definition" TYPE ="TARGET"/>
+        <INSTANCE DBDNAME ="FlatFile" DESCRIPTION ="" NAME ="emp_Src" TRANSFORMATION_NAME ="emp_Src" TRANSFORMATION_TYPE ="Source Definition" TYPE ="SOURCE"/>
+        <INSTANCE DESCRIPTION ="" NAME ="SQ_emp_Src" REUSABLE ="NO" TRANSFORMATION_NAME ="SQ_emp_Src" TRANSFORMATION_TYPE ="Source Qualifier" TYPE ="TRANSFORMATION">
+            <ASSOCIATED_SOURCE_INSTANCE NAME ="emp_Src"/>
+        </INSTANCE>
+        <INSTANCE DESCRIPTION ="" NAME ="LKP_ID" REUSABLE ="NO" TRANSFORMATION_NAME ="LKP_ID" TRANSFORMATION_TYPE ="Lookup Procedure" TYPE ="TRANSFORMATION"/>
+        <INSTANCE DESCRIPTION ="" NAME ="EXP_FLAG" REUSABLE ="NO" TRANSFORMATION_NAME ="EXP_FLAG" TRANSFORMATION_TYPE ="Expression" TYPE ="TRANSFORMATION"/>
+        <INSTANCE DESCRIPTION ="" NAME ="RTRTRANS" REUSABLE ="NO" TRANSFORMATION_NAME ="RTRTRANS" TRANSFORMATION_TYPE ="Router" TYPE ="TRANSFORMATION"/>
+        <INSTANCE DESCRIPTION ="" NAME ="UPDTRANS" REUSABLE ="NO" TRANSFORMATION_NAME ="UPDTRANS" TRANSFORMATION_TYPE ="Update Strategy" TYPE ="TRANSFORMATION"/>
+        <CONNECTOR FROMFIELD ="ID1" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="ID" TOINSTANCE ="EMP_DET1" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="Name1" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="NAME" TOINSTANCE ="EMP_DET1" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="Employer1" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="EMPLOYER" TOINSTANCE ="EMP_DET1" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="Name3" FROMINSTANCE ="UPDTRANS" FROMINSTANCETYPE ="Update Strategy" TOFIELD ="NAME" TOINSTANCE ="EMP_DET" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="ID3" FROMINSTANCE ="UPDTRANS" FROMINSTANCETYPE ="Update Strategy" TOFIELD ="ID" TOINSTANCE ="EMP_DET" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="Employer3" FROMINSTANCE ="UPDTRANS" FROMINSTANCETYPE ="Update Strategy" TOFIELD ="EMPLOYER" TOINSTANCE ="EMP_DET" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="Name" FROMINSTANCE ="emp_Src" FROMINSTANCETYPE ="Source Definition" TOFIELD ="Name" TOINSTANCE ="SQ_emp_Src" TOINSTANCETYPE ="Source Qualifier"/>
+        <CONNECTOR FROMFIELD ="ID" FROMINSTANCE ="emp_Src" FROMINSTANCETYPE ="Source Definition" TOFIELD ="ID" TOINSTANCE ="SQ_emp_Src" TOINSTANCETYPE ="Source Qualifier"/>
+        <CONNECTOR FROMFIELD ="Employer" FROMINSTANCE ="emp_Src" FROMINSTANCETYPE ="Source Definition" TOFIELD ="Employer" TOINSTANCE ="SQ_emp_Src" TOINSTANCETYPE ="Source Qualifier"/>
+        <CONNECTOR FROMFIELD ="ID" FROMINSTANCE ="SQ_emp_Src" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="ID1" TOINSTANCE ="LKP_ID" TOINSTANCETYPE ="Lookup Procedure"/>
+        <CONNECTOR FROMFIELD ="Name" FROMINSTANCE ="SQ_emp_Src" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="Name" TOINSTANCE ="EXP_FLAG" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="ID" FROMINSTANCE ="SQ_emp_Src" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="ID" TOINSTANCE ="EXP_FLAG" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="Employer" FROMINSTANCE ="SQ_emp_Src" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="Employer" TOINSTANCE ="EXP_FLAG" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="NAME" FROMINSTANCE ="LKP_ID" FROMINSTANCETYPE ="Lookup Procedure" TOFIELD ="lkp_NAME" TOINSTANCE ="EXP_FLAG" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="Name" FROMINSTANCE ="EXP_FLAG" FROMINSTANCETYPE ="Expression" TOFIELD ="Name" TOINSTANCE ="RTRTRANS" TOINSTANCETYPE ="Router"/>
+        <CONNECTOR FROMFIELD ="ID" FROMINSTANCE ="EXP_FLAG" FROMINSTANCETYPE ="Expression" TOFIELD ="ID" TOINSTANCE ="RTRTRANS" TOINSTANCETYPE ="Router"/>
+        <CONNECTOR FROMFIELD ="Employer" FROMINSTANCE ="EXP_FLAG" FROMINSTANCETYPE ="Expression" TOFIELD ="Employer" TOINSTANCE ="RTRTRANS" TOINSTANCETYPE ="Router"/>
+        <CONNECTOR FROMFIELD ="lkp_NAME" FROMINSTANCE ="EXP_FLAG" FROMINSTANCETYPE ="Expression" TOFIELD ="lkp_NAME" TOINSTANCE ="RTRTRANS" TOINSTANCETYPE ="Router"/>
+        <CONNECTOR FROMFIELD ="flag" FROMINSTANCE ="EXP_FLAG" FROMINSTANCETYPE ="Expression" TOFIELD ="flag" TOINSTANCE ="RTRTRANS" TOINSTANCETYPE ="Router"/>
+        <CONNECTOR FROMFIELD ="Name3" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="Name3" TOINSTANCE ="UPDTRANS" TOINSTANCETYPE ="Update Strategy"/>
+        <CONNECTOR FROMFIELD ="ID3" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="ID3" TOINSTANCE ="UPDTRANS" TOINSTANCETYPE ="Update Strategy"/>
+        <CONNECTOR FROMFIELD ="Employer3" FROMINSTANCE ="RTRTRANS" FROMINSTANCETYPE ="Router" TOFIELD ="Employer3" TOINSTANCE ="UPDTRANS" TOINSTANCETYPE ="Update Strategy"/>
+        <TARGETLOADORDER ORDER ="1" TARGETINSTANCE ="EMP_DET1"/>
+        <TARGETLOADORDER ORDER ="1" TARGETINSTANCE ="EMP_DET"/>
+        <ERPINFO/>
+    </MAPPING>
+    <CONFIG DESCRIPTION ="Default session configuration object" ISDEFAULT ="YES" NAME ="default_session_config" VERSIONNUMBER ="1">
+        <ATTRIBUTE NAME ="Advanced" VALUE =""/>
+        <ATTRIBUTE NAME ="Constraint based load ordering" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Cache LOOKUP() function" VALUE ="YES"/>
+        <ATTRIBUTE NAME ="Default buffer block size" VALUE ="Auto"/>
+        <ATTRIBUTE NAME ="Line Sequential buffer length" VALUE ="1024"/>
+        <ATTRIBUTE NAME ="Maximum Memory Allowed For Auto Memory Attributes" VALUE ="512MB"/>
+        <ATTRIBUTE NAME ="Maximum Percentage of Total Memory Allowed For Auto Memory Attributes" VALUE ="5"/>
+        <ATTRIBUTE NAME ="Additional Concurrent Pipelines for Lookup Cache Creation" VALUE ="Auto"/>
+        <ATTRIBUTE NAME ="Custom Properties" VALUE =""/>
+        <ATTRIBUTE NAME ="Pre-build lookup cache" VALUE ="Auto"/>
+        <ATTRIBUTE NAME ="Optimization Level" VALUE ="Medium"/>
+        <ATTRIBUTE NAME ="DateTime Format String" VALUE ="MM/DD/YYYY HH24:MI:SS.US"/>
+        <ATTRIBUTE NAME ="Pre 85 Timestamp Compatibility" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Log Options" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Save session log by" VALUE ="Session runs"/>
+        <ATTRIBUTE NAME ="Save session log for these runs" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Session Log File Max Size" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Session Log File Max Time Period" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Maximum Partial Session Log Files" VALUE ="1"/>
+        <ATTRIBUTE NAME ="Writer Commit Statistics Log Frequency" VALUE ="1"/>
+        <ATTRIBUTE NAME ="Writer Commit Statistics Log Interval" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Error handling" VALUE =""/>
+        <ATTRIBUTE NAME ="Stop on errors" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Override tracing" VALUE ="None"/>
+        <ATTRIBUTE NAME ="On Stored Procedure error" VALUE ="Stop"/>
+        <ATTRIBUTE NAME ="On Pre-session command task error" VALUE ="Stop"/>
+        <ATTRIBUTE NAME ="On Pre-Post SQL error" VALUE ="Stop"/>
+        <ATTRIBUTE NAME ="Enable Recovery" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Error Log Type" VALUE ="None"/>
+        <ATTRIBUTE NAME ="Error Log Table Name Prefix" VALUE =""/>
+        <ATTRIBUTE NAME ="Error Log File Name" VALUE ="PMError.log"/>
+        <ATTRIBUTE NAME ="Log Source Row Data" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Data Column Delimiter" VALUE ="|"/>
+        <ATTRIBUTE NAME ="Partitioning Options" VALUE =""/>
+        <ATTRIBUTE NAME ="Dynamic Partitioning" VALUE ="Disabled"/>
+        <ATTRIBUTE NAME ="Number of Partitions" VALUE ="1"/>
+        <ATTRIBUTE NAME ="Multiplication Factor" VALUE ="Auto"/>
+        <ATTRIBUTE NAME ="Session on Grid" VALUE =""/>
+        <ATTRIBUTE NAME ="Is Enabled" VALUE ="NO"/>
+    </CONFIG>
+    <SESSION DESCRIPTION ="" ISVALID ="YES" MAPPINGNAME ="M_SCD_T1" NAME ="S_M_SCD_T1" REUSABLE ="YES" SORTORDER ="Binary" VERSIONNUMBER ="1">
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="YES" PARTITIONTYPE ="PASS THROUGH" PIPELINE ="1" SINSTANCENAME ="EMP_DET1" STAGE ="1" TRANSFORMATIONNAME ="EMP_DET1" TRANSFORMATIONTYPE ="Target Definition"/>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="YES" PARTITIONTYPE ="PASS THROUGH" PIPELINE ="1" SINSTANCENAME ="EMP_DET" STAGE ="2" TRANSFORMATIONNAME ="EMP_DET" TRANSFORMATIONTYPE ="Target Definition"/>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="0" SINSTANCENAME ="emp_Src" STAGE ="0" TRANSFORMATIONNAME ="emp_Src" TRANSFORMATIONTYPE ="Source Definition">
+            <FLATFILE CODEPAGE ="MS1252" CONSECDELIMITERSASONE ="NO" DELIMITED ="YES" DELIMITERS ="," ESCAPE_CHARACTER ="" KEEPESCAPECHAR ="NO" LINESEQUENTIAL ="NO" MULTIDELIMITERSASAND ="NO" NULLCHARTYPE ="ASCII" NULL_CHARACTER ="*" PADBYTES ="1" QUOTE_CHARACTER ="DOUBLE" REPEATABLE ="NO" ROWDELIMITER ="0" SKIPROWS ="1" STRIPTRAILINGBLANKS ="NO"/>
+        </SESSTRANSFORMATIONINST>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="YES" PARTITIONTYPE ="PASS THROUGH" PIPELINE ="1" SINSTANCENAME ="SQ_emp_Src" STAGE ="3" TRANSFORMATIONNAME ="SQ_emp_Src" TRANSFORMATIONTYPE ="Source Qualifier"/>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="LKP_ID" STAGE ="3" TRANSFORMATIONNAME ="LKP_ID" TRANSFORMATIONTYPE ="Lookup Procedure">
+            <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+            <ATTRIBUTE NAME ="Connection Information" VALUE ="Oracle"/>
+        </SESSTRANSFORMATIONINST>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="EXP_FLAG" STAGE ="3" TRANSFORMATIONNAME ="EXP_FLAG" TRANSFORMATIONTYPE ="Expression">
+            <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+        </SESSTRANSFORMATIONINST>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="RTRTRANS" STAGE ="3" TRANSFORMATIONNAME ="RTRTRANS" TRANSFORMATIONTYPE ="Router">
+            <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+        </SESSTRANSFORMATIONINST>
+        <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="UPDTRANS" STAGE ="3" TRANSFORMATIONNAME ="UPDTRANS" TRANSFORMATIONTYPE ="Update Strategy">
+            <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+        </SESSTRANSFORMATIONINST>
+        <CONFIGREFERENCE REFOBJECTNAME ="default_session_config" TYPE ="Session config"/>
+        <SESSIONEXTENSION NAME ="Relational Writer" SINSTANCENAME ="EMP_DET1" SUBTYPE ="Relational Writer" TRANSFORMATIONTYPE ="Target Definition" TYPE ="WRITER">
+            <CONNECTIONREFERENCE CNXREFNAME ="DB Connection" CONNECTIONNAME ="Oracle" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="Oracle" CONNECTIONTYPE ="Relational" VARIABLE =""/>
+            <ATTRIBUTE NAME ="Target load type" VALUE ="Normal"/>
+            <ATTRIBUTE NAME ="Insert" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Update as Update" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Update as Insert" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Update else Insert" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Enable array upsert or update" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Delete" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Truncate target table option" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Reject file directory" VALUE ="$PMBadFileDir&#x5c;"/>
+            <ATTRIBUTE NAME ="Reject filename" VALUE ="emp_det11.bad"/>
+        </SESSIONEXTENSION>
+        <SESSIONEXTENSION NAME ="Relational Writer" SINSTANCENAME ="EMP_DET" SUBTYPE ="Relational Writer" TRANSFORMATIONTYPE ="Target Definition" TYPE ="WRITER">
+            <CONNECTIONREFERENCE CNXREFNAME ="DB Connection" CONNECTIONNAME ="Oracle" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="Oracle" CONNECTIONTYPE ="Relational" VARIABLE =""/>
+            <ATTRIBUTE NAME ="Target load type" VALUE ="Normal"/>
+            <ATTRIBUTE NAME ="Insert" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Update as Update" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Update as Insert" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Update else Insert" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Enable array upsert or update" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Delete" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Truncate target table option" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Reject file directory" VALUE ="$PMBadFileDir&#x5c;"/>
+            <ATTRIBUTE NAME ="Reject filename" VALUE ="emp_det1.bad"/>
+        </SESSIONEXTENSION>
+        <SESSIONEXTENSION DSQINSTNAME ="SQ_emp_Src" DSQINSTTYPE ="Source Qualifier" NAME ="File Reader" SINSTANCENAME ="emp_Src" SUBTYPE ="File Reader" TRANSFORMATIONTYPE ="Source Definition" TYPE ="READER">
+            <CONNECTIONREFERENCE CNXREFNAME ="Connection" CONNECTIONNAME ="" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="" CONNECTIONTYPE ="" VARIABLE =""/>
+            <ATTRIBUTE NAME ="Input Type" VALUE ="File"/>
+            <ATTRIBUTE NAME ="Concurrent read partitioning" VALUE ="Optimize throughput"/>
+            <ATTRIBUTE NAME ="Command Type" VALUE ="Command Generating Data"/>
+            <ATTRIBUTE NAME ="Source filetype" VALUE ="Direct"/>
+            <ATTRIBUTE NAME ="Source file directory" VALUE ="C:&#x5c;Users&#x5c;Administrator&#x5c;Desktop&#x5c;"/>
+            <ATTRIBUTE NAME ="Source filename" VALUE ="emp_Src.csv"/>
+            <ATTRIBUTE NAME ="Command" VALUE =""/>
+            <ATTRIBUTE NAME ="File Reader Truncate String Null" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Codepage Parameter" VALUE =""/>
+        </SESSIONEXTENSION>
+        <SESSIONEXTENSION NAME ="File Reader" SINSTANCENAME ="SQ_emp_Src" SUBTYPE ="File Reader" TRANSFORMATIONTYPE ="Source Qualifier" TYPE ="READER"/>
+        <SESSIONEXTENSION NAME ="Relational Lookup" SINSTANCENAME ="LKP_ID" SUBTYPE ="Relational Lookup" TRANSFORMATIONTYPE ="Lookup Procedure" TYPE ="LOOKUPEXTENSION">
+            <CONNECTIONREFERENCE CNXREFNAME ="DB Connection" CONNECTIONNAME ="Oracle" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="Oracle" CONNECTIONTYPE ="Relational" VARIABLE =""/>
+        </SESSIONEXTENSION>
+        <ATTRIBUTE NAME ="General Options" VALUE =""/>
+        <ATTRIBUTE NAME ="Write Backward Compatible Session Log File" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Session Log File Name" VALUE ="S_M_SCD_T1.log"/>
+        <ATTRIBUTE NAME ="Session Log File directory" VALUE ="$PMSessionLogDir&#x5c;"/>
+        <ATTRIBUTE NAME ="Parameter Filename" VALUE =""/>
+        <ATTRIBUTE NAME ="Enable Test Load" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="$Source connection value" VALUE =""/>
+        <ATTRIBUTE NAME ="$Target connection value" VALUE =""/>
+        <ATTRIBUTE NAME ="Treat source rows as" VALUE ="Data driven"/>
+        <ATTRIBUTE NAME ="Commit Type" VALUE ="Target"/>
+        <ATTRIBUTE NAME ="Commit Interval" VALUE ="10000"/>
+        <ATTRIBUTE NAME ="Commit On End Of File" VALUE ="YES"/>
+        <ATTRIBUTE NAME ="Rollback Transactions on Errors" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Recovery Strategy" VALUE ="Fail task and continue workflow"/>
+        <ATTRIBUTE NAME ="Java Classpath" VALUE =""/>
+        <ATTRIBUTE NAME ="Performance" VALUE =""/>
+        <ATTRIBUTE NAME ="DTM buffer size" VALUE ="Auto"/>
+        <ATTRIBUTE NAME ="Collect performance data" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Write performance data to repository" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Incremental Aggregation" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Enable high precision" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Session retry on deadlock" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Pushdown Optimization" VALUE ="None"/>
+        <ATTRIBUTE NAME ="Allow Temporary View for Pushdown" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Allow Temporary Sequence for Pushdown" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Allow Pushdown for User Incompatible Connections" VALUE ="NO"/>
+    </SESSION>
+    <WORKFLOW DESCRIPTION ="" ISENABLED ="YES" ISRUNNABLESERVICE ="NO" ISSERVICE ="NO" ISVALID ="YES" NAME ="WF_S_M_SCD" REUSABLE_SCHEDULER ="NO" SCHEDULERNAME ="Scheduler" SERVERNAME ="Ints" SERVER_DOMAINNAME ="Domain" SUSPEND_ON_ERROR ="NO" TASKS_MUST_RUN_ON_SERVER ="NO" VERSIONNUMBER ="1">
+        <SCHEDULER DESCRIPTION ="" NAME ="Scheduler" REUSABLE ="NO" VERSIONNUMBER ="1">
+            <SCHEDULEINFO SCHEDULETYPE ="ONDEMAND"/>
+        </SCHEDULER>
+        <TASK DESCRIPTION ="" NAME ="Start" REUSABLE ="NO" TYPE ="Start" VERSIONNUMBER ="1"/>
+        <TASKINSTANCE DESCRIPTION ="" ISENABLED ="YES" NAME ="Start" REUSABLE ="NO" TASKNAME ="Start" TASKTYPE ="Start"/>
+        <TASKINSTANCE DESCRIPTION ="" FAIL_PARENT_IF_INSTANCE_DID_NOT_RUN ="NO" FAIL_PARENT_IF_INSTANCE_FAILS ="NO" ISENABLED ="YES" NAME ="S_M_SCD_T1" REUSABLE ="YES" TASKNAME ="S_M_SCD_T1" TASKTYPE ="Session" TREAT_INPUTLINK_AS_AND ="YES"/>
+        <WORKFLOWLINK CONDITION ="" FROMTASK ="Start" TOTASK ="S_M_SCD_T1"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task started" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.StartTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task completed" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.EndTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.Status" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of the previous task that is not disabled" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.PrevTaskStatus" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Error code for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.ErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="Error message for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.ErrorMsg" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task started" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.StartTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task completed" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.EndTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.Status" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of the previous task that is not disabled" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.PrevTaskStatus" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Error code for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.ErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="Error message for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.ErrorMsg" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="bigint" DEFAULTVALUE ="" DESCRIPTION ="Rows successfully read" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.SrcSuccessRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="bigint" DEFAULTVALUE ="" DESCRIPTION ="Rows failed to read" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.SrcFailedRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="bigint" DEFAULTVALUE ="" DESCRIPTION ="Rows successfully loaded" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.TgtSuccessRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="bigint" DEFAULTVALUE ="" DESCRIPTION ="Rows failed to load" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.TgtFailedRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Total number of transformation errors" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.TotalTransErrors" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="First error code" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.FirstErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="First error message" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$S_M_SCD_T1.FirstErrorMsg" USERDEFINED ="NO"/>
+        <ATTRIBUTE NAME ="Parameter Filename" VALUE =""/>
+        <ATTRIBUTE NAME ="Write Backward Compatible Workflow Log File" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Workflow Log File Name" VALUE ="WF_S_M_SCD.log"/>
+        <ATTRIBUTE NAME ="Workflow Log File Directory" VALUE ="$PMWorkflowLogDir&#x5c;"/>
+        <ATTRIBUTE NAME ="Save Workflow log by" VALUE ="By runs"/>
+        <ATTRIBUTE NAME ="Save workflow log for these runs" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Service Name" VALUE =""/>
+        <ATTRIBUTE NAME ="Service Timeout" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Is Service Visible" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Is Service Protected" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Fail task after wait time" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Enable HA recovery" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Automatically recover terminated tasks" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Service Level Name" VALUE ="Default"/>
+        <ATTRIBUTE NAME ="Allow concurrent run with unique run instance name" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Allow concurrent run with same run instance name" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Maximum number of concurrent runs" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Assigned Web Services Hubs" VALUE =""/>
+        <ATTRIBUTE NAME ="Maximum number of concurrent runs per Hub" VALUE ="1000"/>
+        <ATTRIBUTE NAME ="Expected Service Time" VALUE ="1"/>
+    </WORKFLOW>
+</FOLDER>
+</REPOSITORY>
+</POWERMART>
