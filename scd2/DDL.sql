@@ -8,3 +8,5 @@ CREATE TABLE SCD2
     EFFECTIVE_FROM_DATE date,
     EFFECTIVE_TO_DATE   date
 );
+
+Alter Table scd2 add constraint pk primary key(ID,NAME,ABOUT);
